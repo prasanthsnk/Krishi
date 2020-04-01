@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "449165431026",
+    "firebase_url": "https://krishi-d0c86.firebaseio.com",
+    "project_id": "krishi-d0c86",
+    "storage_bucket": "krishi-d0c86.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:449165431026:android:6b3cd65196e7018a80806b",
+        "android_client_info": {
+          "package_name": "com.krishi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "449165431026-bo76d00r3o5e0ck6js6croe6i8qtuegd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCvDqb1-zCH0i729KhlrlNCZPaXvRK9h48"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "449165431026-bo76d00r3o5e0ck6js6croe6i8qtuegd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

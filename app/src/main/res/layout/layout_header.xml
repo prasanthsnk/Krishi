@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.krishi.viewmodel.BaseViewModel" />
+    </data>
+
+    <LinearLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorPrimary"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:contentDescription="@null"
+            android:onClick="@{() -> viewModel.onClickBack()}"
+            android:padding="8dp"
+            android:src="@drawable/ic_left_caret_white"
+            android:visibility="@{viewModel.isShowBack ? View.VISIBLE : View.GONE}" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:contentDescription="@null"
+            android:onClick="onClickMenu"
+            android:padding="8dp"
+            android:src="@drawable/ic_menu_grey"
+            android:tint="@android:color/white"
+            android:visibility="@{viewModel.isShowBack ? View.GONE : View.VISIBLE}" />
+
+
+        <TextView
+            android:id="@+id/headerPageInformation"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@{viewModel.title}"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+</layout>
