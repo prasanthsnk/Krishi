@@ -12,6 +12,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.krishi.App;
 import com.krishi.model.Users;
 import com.krishi.utils.Constants;
+import com.krishi.utils.Helper;
 
 /**
  * Created by Prasanth on 14-03-2020.
@@ -55,7 +56,7 @@ public class RegisterViewModel extends BaseViewModel {
                 } else if (!dataSnapshot.exists()) {
                     Users user = new Users();
                     user.setName(name.getValue());
-                    user.setPassword(password.getValue());
+                    user.setPassword(Helper.generateKey(password.getValue()));
                     user.setToken(App.readShared(Constants.ACCESS_TOKEN));
                     database.getReference().child("Users").child(mobileNO.getValue()).setValue(user);
                     context.finish();

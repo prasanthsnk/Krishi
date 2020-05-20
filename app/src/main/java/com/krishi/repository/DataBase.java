@@ -26,6 +26,6 @@ public class DataBase extends SQLiteOpenHelper {
 
     private void createTable(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS notification(id INTEGER PRIMARY KEY AUTOINCREMENT ,title TEXT,description TEXT,dbId TEXT);");
-
+        sqLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS expenses (id INTEGER PRIMARY KEY AUTOINCREMENT ,amount TEXT,category TEXT,description TEXT,date_expense INTEGER);");
     }
 }

@@ -8,4 +8,5 @@ public class Constants {
 
     public static final String ACCESS_TOKEN = "ACCESS_TOKEN";
     public static final String MOBILE_NUMBER = "MOBILE_NUMBER";
+    public static final String PBKDF2 = "PBKDF2WithHmacSHA1";
 }

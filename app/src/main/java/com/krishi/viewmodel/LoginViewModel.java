@@ -18,6 +18,7 @@ import com.google.firebase.messaging.FirebaseMessaging;
 import com.krishi.App;
 import com.krishi.model.Users;
 import com.krishi.utils.Constants;
+import com.krishi.utils.Helper;
 import com.krishi.view.activity.HomeActivity;
 import com.krishi.view.activity.RegisterActivity;
 
@@ -69,7 +70,7 @@ public class LoginViewModel extends BaseViewModel {
                 dismissDialogPopup();
                 if (dataSnapshot.exists()) {
                     Users users = dataSnapshot.getValue(Users.class);
-                    if (users.getPassword().equals(password.getValue())) {
+                    if (users.getPassword().equals(Helper.generateKey(password.getValue()))) {
                         database.getReference().child("Users").child(mobileNO.getValue()).child("token").setValue(App.readShared(Constants.ACCESS_TOKEN));
                         App.saveShared(Constants.MOBILE_NUMBER, mobileNO.getValue());
                         redirect();
