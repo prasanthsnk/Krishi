@@ -6,6 +6,7 @@ import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.krishi.view.activity.AgriInfoActivity;
+import com.krishi.view.activity.CropListActivity;
 import com.krishi.view.activity.ExpenseActivity;
 
 /**
@@ -39,7 +40,7 @@ public class HomeViewModel extends BaseViewModel {
         context.startActivity(new Intent(context, AgriInfoActivity.class));
     }
     public void onClickExpense(View view) {
-        context.startActivity(new Intent(context, ExpenseActivity.class));
+        context.startActivity(new Intent(context, CropListActivity.class));
     }
 
 }

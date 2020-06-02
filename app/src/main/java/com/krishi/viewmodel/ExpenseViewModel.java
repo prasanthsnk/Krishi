@@ -7,7 +7,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import com.github.mikephil.charting.data.PieEntry;
-import com.krishi.R;
 import com.krishi.model.ExpenseModel;
 import com.krishi.repository.ExpenseDBService;
 import com.krishi.view.activity.CreateExpenseActivity;
@@ -27,9 +26,10 @@ public class ExpenseViewModel extends BaseViewModel {
     private List<ExpenseModel> expenseModelList;
     private List<PieEntry> chartList;
     private ExpenseListAdapter expenseAdapter;
-    private String calSelection = "All", calSelectionSpent = "All";
+    private String id, calSelection = "All", calSelectionSpent = "All";
 
-    public void setupModel(AppCompatActivity context) {
+    public void setupModel(AppCompatActivity context, String id) {
+        this.id = id;
         setUp(context);
         init();
     }
@@ -39,15 +39,13 @@ public class ExpenseViewModel extends BaseViewModel {
         setShowBack(true);
         setTitle("Expense Manager");
         expenseDBService = new ExpenseDBService();
+        expenseAdapter = new ExpenseListAdapter();
     }
 
     @Override
     public void onResume() {
-        expenseModelList = expenseDBService.getExpenses(getTimestamp(calSelection));
-        chartList = expenseDBService.getSpent(getTimestamp(calSelectionSpent));
-        if (expenseAdapter == null) {
-            expenseAdapter = new ExpenseListAdapter(expenseModelList);
-        }
+        expenseModelList = expenseDBService.getExpenses(id, getTimestamp(calSelection));
+        chartList = expenseDBService.getSpent(id, getTimestamp(calSelectionSpent));
         expenseAdapter.update(expenseModelList);
         Fragment fragment = ((ExpenseActivity) context).getCurrentFragment();
         if (fragment instanceof BalanceFragment) {
@@ -77,7 +75,7 @@ public class ExpenseViewModel extends BaseViewModel {
     }
 
     public void onClickCreateExpense(View view) {
-        context.startActivity(new Intent(context, CreateExpenseActivity.class));
+        context.startActivity(new Intent(context, CreateExpenseActivity.class).putExtra("id", id));
     }
 
     public ExpenseListAdapter getExpenseAdapter() {

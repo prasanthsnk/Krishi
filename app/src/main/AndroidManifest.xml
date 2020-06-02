@@ -13,7 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".view.activity.CreateExpenseActivity"></activity>
+        <activity android:name=".view.activity.CreateCropActivity"></activity>
+        <activity android:name=".view.activity.CropListActivity" />
+        <activity android:name=".view.activity.CreateExpenseActivity" />
         <activity android:name=".view.activity.ExpenseActivity" />
         <activity android:name=".view.activity.SplashActivity">
             <intent-filter>

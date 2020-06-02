@@ -24,7 +24,7 @@ public class CreateExpenseViewModel extends BaseViewModel {
     public MutableLiveData<String> date = new MutableLiveData<>();
     public MutableLiveData<String> category = new MutableLiveData<>();
     public MutableLiveData<String> description = new MutableLiveData<>();
-
+    private String id;
     private DatePickerDialog.OnDateSetListener dateDialog = new DatePickerDialog.OnDateSetListener() {
 
         @Override
@@ -37,7 +37,8 @@ public class CreateExpenseViewModel extends BaseViewModel {
         }
     };
 
-    public void setupModel(AppCompatActivity context) {
+    public void setupModel(AppCompatActivity context, String id) {
+        this.id = id;
         setUp(context);
         init();
     }
@@ -78,6 +79,7 @@ public class CreateExpenseViewModel extends BaseViewModel {
             cv.put("category", category.getValue());
             cv.put("description", description.getValue());
             cv.put("date_expense", formattedDate.getTime());
+            cv.put("cropId", id);
             App.dataBase.insert("expenses", null, cv);
             showToast("Saved...");
             context.finish();

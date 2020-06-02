@@ -12,6 +12,7 @@ import com.krishi.view.adapter.ExpensePagerAdapter;
 import com.krishi.viewmodel.ExpenseViewModel;
 
 public class ExpenseActivity extends BaseActivity {
+    private String id;
     private ActivityExpenseBinding binding;
     private ExpenseViewModel viewModel;
 
@@ -23,9 +24,10 @@ public class ExpenseActivity extends BaseActivity {
 
     @Override
     protected void initialize() {
-         binding = DataBindingUtil.setContentView(this, R.layout.activity_expense);
+        id = getIntent().getExtras().getString("id");
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_expense);
         viewModel = new ViewModelProvider(this).get(ExpenseViewModel.class);
-        viewModel.setupModel(this);
+        viewModel.setupModel(this, id);
         binding.setViewModel(viewModel);
         binding.setLifecycleOwner(this);
         binding.vpPager.setAdapter(new ExpensePagerAdapter(getSupportFragmentManager()));
@@ -41,6 +43,7 @@ public class ExpenseActivity extends BaseActivity {
         super.onResume();
         viewModel.onResume();
     }
+
     public Fragment getCurrentFragment() {
         return getSupportFragmentManager().findFragmentByTag("android:switcher:" + R.id.vpPager + ":" + binding.vpPager.getCurrentItem());
     }

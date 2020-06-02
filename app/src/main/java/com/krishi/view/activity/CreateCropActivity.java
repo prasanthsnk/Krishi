@@ -6,11 +6,10 @@ import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.krishi.R;
-import com.krishi.databinding.ActivityCreateExpenseBinding;
-import com.krishi.viewmodel.CreateExpenseViewModel;
+import com.krishi.databinding.ActivityCreateCropBinding;
+import com.krishi.viewmodel.CreateCropViewModel;
 
-
-public class CreateExpenseActivity extends BaseActivity {
+public class CreateCropActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,10 +19,9 @@ public class CreateExpenseActivity extends BaseActivity {
 
     @Override
     protected void initialize() {
-        String id = getIntent().getExtras().getString("id");
-        ActivityCreateExpenseBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_create_expense);
-        CreateExpenseViewModel viewModel = new ViewModelProvider(this).get(CreateExpenseViewModel.class);
-        viewModel.setupModel(this,id);
+        ActivityCreateCropBinding binding= DataBindingUtil.setContentView(this, R.layout.activity_create_crop);
+        CreateCropViewModel viewModel = new ViewModelProvider(this).get(CreateCropViewModel.class);
+        viewModel.setupModel(this);
         binding.setViewModel(viewModel);
         binding.setLifecycleOwner(this);
     }
